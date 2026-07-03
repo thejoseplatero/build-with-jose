@@ -1,0 +1,1277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Build with Jose helps international product builders land their first North American PM role. Join Cohort 04.">
+<title>Build with Jose — Land your first North American product role</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;0,7..72,800;1,7..72,500&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --surface: #fcf9f6;
+    --surface-low: #f6f3f0;
+    --surface-container: #f0edea;
+    --surface-high: #eae8e5;
+    --ink: #15171c;
+    --ink-soft: #3d3a36;
+    --ink-mute: #6c655e;
+    --ink-10: rgba(21,23,28,0.10);
+    --ink-06: rgba(21,23,28,0.06);
+    --orange: #ff4a1c;
+    --orange-deep: #d6310a;
+    --orange-soft: #ffe4dc;
+    --paper: #ffffff;
+    --char: #1c1c1a;
+    --char-2: #26251f;
+    --char-line: rgba(255,255,255,0.10);
+    --serif: "Literata", "Iowan Old Style", Georgia, serif;
+    --sans: "Hanken Grotesk", -apple-system, system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    --max: 1180px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--surface);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+
+  /* ——————————————————— shared ——————————————————— */
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+  @media (max-width: 720px) { .wrap { padding: 0 20px; } }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .pill-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px 8px 10px;
+    border: 1px solid var(--ink);
+    background: var(--surface);
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .pill-tag::before {
+    content: "";
+    width: 10px; height: 10px;
+    background: var(--orange);
+    box-shadow: 3px 0 0 var(--orange), 0 3px 0 var(--orange), -3px 0 0 var(--orange), 0 -3px 0 var(--orange);
+  }
+
+  .btn {
+    --bg: var(--orange);
+    --fg: #fff;
+    --bd: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 22px;
+    background: var(--bg);
+    color: var(--fg);
+    border: 1.5px solid var(--bd);
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 4px 4px 0 var(--ink);
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .btn:hover { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 var(--ink); }
+  .btn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--ink); }
+  .btn.ghost { --bg: transparent; --fg: var(--ink); }
+  .btn.lg { padding: 18px 28px; font-size: 13px; }
+  .btn.block { width: 100%; }
+
+  .pixdiv {
+    height: 8px;
+    background-image: linear-gradient(90deg, var(--ink) 50%, transparent 50%);
+    background-size: 8px 8px;
+    background-repeat: repeat-x;
+    background-position: 0 50%;
+    border-bottom: 1px solid var(--ink-10);
+  }
+
+  /* ——————————————————— header ——————————————————— */
+  header.top {
+    border-bottom: 1px solid var(--ink-10);
+    background: var(--surface);
+    position: sticky; top: 0; z-index: 20;
+  }
+  .top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .brand-mark {
+    width: 36px; height: 36px;
+    display: grid;
+    place-items: center;
+    border: 1.5px solid var(--ink);
+    background: var(--surface);
+    flex-shrink: 0;
+  }
+  .brand-mark svg { display: block; }
+  .brand small { display: block; font-size: 9px; letter-spacing: 0.18em; color: var(--ink-mute); margin-top: 2px; }
+  .brand .stack { line-height: 1.05; }
+
+  nav.primary { display: flex; align-items: center; gap: 28px; }
+  nav.primary a {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+    padding: 8px 4px;
+    border-bottom: 2px solid transparent;
+    transition: border-color .15s;
+  }
+  nav.primary a:hover { border-bottom-color: var(--orange); }
+  @media (max-width: 720px) { nav.primary { display: none; } }
+
+  /* ——————————————————— hero ——————————————————— */
+  .hero { padding: 56px 0 48px; }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(40px, 5.4vw, 64px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin: 22px 0 22px;
+    color: var(--ink);
+  }
+  .hero h1 .accent { color: var(--orange); }
+  .hero h1 .accent::before {
+    content: "";
+    display: inline-block;
+    width: 14px; height: 14px;
+    background: var(--orange);
+    margin-right: 6px;
+    transform: translateY(-6px);
+  }
+  .hero p.lede {
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 480px;
+    margin: 0 0 28px;
+  }
+  .hero .cta-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  /* video card */
+  .video {
+    position: relative;
+    aspect-ratio: 16/10;
+    background: #18181a;
+    border: 1.5px solid var(--ink);
+    overflow: hidden;
+    box-shadow: 6px 6px 0 var(--ink);
+    cursor: pointer;
+  }
+  .video::after {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(255,255,255,.04) 0, transparent 30%),
+      radial-gradient(circle at 80% 70%, rgba(255,255,255,.03) 0, transparent 30%);
+    pointer-events: none;
+  }
+  .play {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 84px; height: 84px;
+    display: grid; place-items: center;
+    background: var(--surface);
+    border: 1.5px solid var(--ink);
+    cursor: pointer;
+    box-shadow: 4px 4px 0 var(--ink);
+    transition: transform .15s ease, box-shadow .15s ease;
+    z-index: 2;
+  }
+  .play:hover { transform: translate(calc(-50% - 1px), calc(-50% - 1px)); box-shadow: 5px 5px 0 var(--ink); }
+  .play svg { margin-left: 4px; }
+  .video .label {
+    position: absolute;
+    left: 0; bottom: 0;
+    padding: 12px 16px;
+    font-family: var(--mono);
+    color: #f3eee9;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,.55) 100%);
+    width: 100%;
+    z-index: 2;
+  }
+  .video .tag-tr {
+    position: absolute;
+    top: 14px; right: 14px;
+    font-family: var(--mono);
+    color: #f3eee9;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    display: flex; align-items: center; gap: 6px;
+    z-index: 2;
+  }
+  .video .tag-tr::before {
+    content: ""; width: 7px; height: 7px; background: var(--orange);
+    animation: blink 1.4s steps(2, end) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0.25; } }
+
+  /* ——————————————————— stats strip ——————————————————— */
+  .strip {
+    background: var(--surface-container);
+    border-top: 1px solid var(--ink-10);
+    border-bottom: 1px solid var(--ink-10);
+  }
+  .strip-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+    padding: 18px 0;
+  }
+  .stat {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+  }
+  .stat:first-child { justify-content: flex-start; }
+  .stat:last-child { justify-content: flex-end; }
+  .stat b { color: var(--ink); font-weight: 700; }
+  .stat::before {
+    content: ""; width: 6px; height: 6px; background: var(--orange); flex-shrink: 0;
+  }
+  @media (max-width: 720px) {
+    .strip-inner { grid-template-columns: 1fr; gap: 10px; }
+    .stat, .stat:first-child, .stat:last-child { justify-content: flex-start; }
+  }
+
+  /* ——————————————————— founder ——————————————————— */
+  .founder { padding: 88px 0 64px; }
+  .founder-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  @media (max-width: 800px) {
+    .founder-grid { grid-template-columns: 1fr; gap: 28px; }
+  }
+  .portrait {
+    width: 280px; height: 320px;
+    border: 1.5px solid var(--ink);
+    box-shadow: 6px 6px 0 var(--ink);
+    background: linear-gradient(135deg, #2a2826 0%, #4a423d 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .portrait img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+  }
+  .portrait .portrait-placeholder { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .portrait::after {
+    content: "JOSE M.";
+    position: absolute; left: 10px; bottom: 8px;
+    font-family: var(--mono); font-size: 10px;
+    color: rgba(255,255,255,.55); letter-spacing: 0.18em;
+    z-index: 1;
+  }
+
+  .founder h2 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin: 0 0 14px;
+    color: var(--ink);
+  }
+  .founder h2 .q { color: var(--orange); font-weight: 700; }
+  .founder .meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    margin: 0 0 22px;
+    display: flex; flex-wrap: wrap; gap: 12px;
+  }
+  .founder .meta span::before { content: "·  "; color: var(--orange); }
+  .founder .meta span:first-child::before { content: ""; }
+  .founder p { font-size: 16px; line-height: 1.65; color: var(--ink-soft); margin: 0 0 14px; max-width: 56ch; }
+
+  .as-seen {
+    margin-top: 28px;
+    border-top: 1px solid var(--ink-10);
+    padding-top: 18px;
+  }
+  .as-seen .eyebrow { display: block; margin-bottom: 12px; }
+  .logo-row {
+    display: flex; flex-wrap: wrap; gap: 28px;
+    align-items: center;
+  }
+  .logo-row .lg {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 600;
+    color: var(--ink-soft);
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    opacity: .8;
+  }
+  .logo-row .lg.mono {
+    font-family: var(--mono);
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  /* ——————————————————— pillars ——————————————————— */
+  .pillars { padding: 72px 0 80px; background: var(--surface-low); }
+  .section-head { text-align: center; margin: 0 0 40px; }
+  .section-head h3 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(28px, 3.4vw, 38px);
+    letter-spacing: -0.01em;
+    margin: 0 0 8px;
+  }
+  .section-head p {
+    color: var(--ink-mute);
+    margin: 0;
+    font-size: 15px;
+  }
+
+  .pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 900px) { .pillar-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 540px) { .pillar-grid { grid-template-columns: 1fr; } }
+  .pillar {
+    background: var(--paper);
+    border: 1px solid var(--ink);
+    padding: 22px 18px 22px;
+    position: relative;
+    min-height: 220px;
+  }
+  .pillar::before {
+    content: "";
+    position: absolute; left: 0; right: 0; top: 0;
+    height: 4px; background: var(--orange);
+  }
+  .pillar .num {
+    position: absolute;
+    top: 14px; right: 14px;
+    font-family: var(--mono);
+    font-size: 10px; letter-spacing: 0.16em; color: var(--ink-mute);
+  }
+  .pillar h4 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 18px;
+    margin: 14px 0 8px;
+    line-height: 1.25;
+  }
+  .pillar p { font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); margin: 0; }
+  .pillar .pixicon { width: 36px; height: 36px; image-rendering: pixelated; }
+
+  /* ——————————————————— dark resources ——————————————————— */
+  .dark-section {
+    background: var(--char);
+    color: #efece7;
+    padding: 80px 0;
+  }
+  .dark-section .lab {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .dark-section .lab::before { content: ""; width: 8px; height: 8px; background: var(--orange); flex-shrink: 0; }
+  .dark-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr 1fr;
+    gap: 36px 32px;
+    align-items: start;
+  }
+  .dark-section h3 {
+    font-family: var(--serif);
+    font-size: 30px;
+    line-height: 1.18;
+    margin: 0;
+    color: #f6f3ee;
+    font-weight: 700;
+  }
+  .dark-section h3 + p { color: #b8b3ac; font-size: 14px; max-width: 30ch; margin: 14px 0 0; }
+  .res-card { border-top: 1px solid var(--char-line); padding-top: 22px; }
+  .res-card .n { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; color: var(--orange); margin-bottom: 14px; }
+  .res-card h5 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 19px;
+    margin: 0 0 8px;
+    color: #f6f3ee;
+  }
+  .res-card p { font-size: 13.5px; color: #b8b3ac; line-height: 1.55; margin: 0; }
+  @media (max-width: 900px) { .dark-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .dark-grid { grid-template-columns: 1fr; } }
+
+  /* ——————————————————— pricing ——————————————————— */
+  .price-section { padding: 96px 0; }
+  .price-card {
+    max-width: 560px;
+    margin: 0 auto;
+    background: var(--paper);
+    border: 1.5px solid var(--ink);
+    box-shadow: 8px 8px 0 var(--ink);
+    padding: 56px 56px 44px;
+    position: relative;
+    text-align: center;
+  }
+  .price-card .corner {
+    position: absolute; top: -1px; right: -1px;
+    width: 56px; height: 56px;
+    background: var(--orange);
+    clip-path: polygon(100% 0, 0 0, 100% 100%);
+  }
+  .price-card .corner::after {
+    content: "★";
+    position: absolute; top: 6px; right: 8px; color: #fff; font-size: 14px;
+  }
+  .price-card .eyebrow { display: block; margin-bottom: 12px; color: var(--ink-mute); }
+  .price-card h3 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 38px;
+    letter-spacing: -0.01em;
+    margin: 0 0 18px;
+  }
+  .price {
+    display: flex; align-items: baseline; justify-content: center; gap: 14px;
+    margin-bottom: 6px;
+  }
+  .price .old {
+    color: var(--ink-mute);
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 600;
+  }
+  .price .new {
+    color: var(--orange);
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .price .new sup { font-size: 24px; font-weight: 700; top: -22px; margin-right: 2px; position: relative; }
+  .price-note { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em; color: var(--ink-mute); text-transform: uppercase; margin: 0 0 32px; }
+
+  .feat-list {
+    list-style: none; padding: 0; margin: 0 0 30px;
+    text-align: left;
+    border-top: 1px solid var(--ink-10);
+  }
+  .feat-list li {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    gap: 12px;
+    padding: 14px 4px;
+    border-bottom: 1px solid var(--ink-10);
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    align-items: start;
+  }
+  .feat-list li b {
+    color: var(--ink);
+    font-family: var(--serif);
+    font-weight: 600;
+    display: block;
+    font-size: 15.5px;
+    margin-bottom: 2px;
+  }
+  .feat-list svg { margin-top: 4px; flex-shrink: 0; }
+
+  .price-card .micro {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-mute);
+    margin: 14px 0 0;
+  }
+
+  @media (max-width: 600px) {
+    .price-card { padding: 36px 24px 28px; }
+    .price-card h3 { font-size: 30px; }
+    .price .new { font-size: 44px; }
+  }
+
+  /* ——————————————————— results ——————————————————— */
+  .results { padding: 80px 0; background: var(--surface-low); }
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  @media (max-width: 800px) { .results-grid { grid-template-columns: 1fr; } }
+  .result {
+    background: var(--paper);
+    border: 1px solid var(--ink);
+    padding: 28px 24px 24px;
+    position: relative;
+  }
+  .result .mark {
+    font-family: var(--serif);
+    font-size: 42px;
+    line-height: 1;
+    color: var(--orange);
+    font-weight: 700;
+    margin: -4px 0 10px;
+  }
+  .result blockquote {
+    margin: 0 0 18px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .result cite {
+    display: block;
+    font-style: normal;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .result cite b {
+    display: block;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 0;
+    text-transform: none;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  /* ——————————————————— FAQ ——————————————————— */
+  .faq { padding: 64px 0 96px; }
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 56px;
+  }
+  @media (max-width: 800px) { .faq-grid { grid-template-columns: 1fr; gap: 16px; } }
+  .faq h3 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 30px;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  details.qa {
+    border-bottom: 1px solid var(--ink-10);
+    padding: 18px 0;
+  }
+  details.qa[open] summary { color: var(--orange); }
+  details.qa summary {
+    list-style: none;
+    cursor: pointer;
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    user-select: none;
+  }
+  details.qa summary::-webkit-details-marker { display: none; }
+  details.qa summary::after {
+    content: "+";
+    font-family: var(--mono);
+    font-weight: 400;
+    font-size: 22px;
+    color: var(--ink-mute);
+    transition: color .2s ease;
+    flex-shrink: 0;
+  }
+  details.qa[open] summary::after { content: "–"; color: var(--orange); }
+  details.qa .ans {
+    margin: 14px 0 4px;
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 64ch;
+  }
+
+  /* ——————————————————— CTA banner ——————————————————— */
+  .cta-banner {
+    background: var(--orange-deep);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    padding: 64px 0 72px;
+  }
+  .cta-banner::before, .cta-banner::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 220px; height: 220px;
+    background-image:
+      linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px);
+    background-size: 18px 18px;
+    opacity: .9;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+  .cta-banner::before { left: -60px; transform: translateY(-50%) rotate(-12deg); }
+  .cta-banner::after { right: -60px; transform: translateY(-50%) rotate(12deg); }
+  .cta-inner { position: relative; z-index: 2; text-align: center; max-width: 620px; margin: 0 auto; }
+  .cta-banner h3 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(28px, 3.6vw, 40px);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin: 0 0 10px;
+  }
+  .cta-banner p {
+    margin: 0 0 24px;
+    font-size: 14px;
+    color: #ffe7df;
+  }
+  .cta-banner p b { color: #fff; }
+  .signup {
+    display: flex;
+    gap: 0;
+    max-width: 460px;
+    margin: 0 auto;
+    border: 1.5px solid #1a1a18;
+    background: #fff;
+    box-shadow: 4px 4px 0 #1a1a18;
+  }
+  .signup input {
+    flex: 1;
+    padding: 14px 16px;
+    border: 0;
+    outline: 0;
+    font-family: var(--sans);
+    font-size: 15px;
+    background: transparent;
+    color: var(--ink);
+    min-width: 0;
+  }
+  .signup input::placeholder { color: var(--ink-mute); }
+  .signup button {
+    border: 0;
+    border-left: 1.5px solid #1a1a18;
+    background: var(--ink);
+    color: #fff;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0 22px;
+    cursor: pointer;
+    transition: background .15s;
+    white-space: nowrap;
+  }
+  .signup button:hover { background: #000; }
+  .cta-banner .footnote {
+    margin: 18px 0 0;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #ffd2c5;
+  }
+
+  .cta-pixel {
+    position: absolute;
+    right: 4%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 240px; height: 240px;
+    opacity: .3;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .cta-pixel-left {
+    position: absolute;
+    left: 4%;
+    top: 50%;
+    transform: translateY(-50%) scaleX(-1);
+    width: 200px; height: 200px;
+    opacity: .22;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* ——————————————————— footer ——————————————————— */
+  footer.bot {
+    background: var(--surface);
+    border-top: 1px solid var(--ink-10);
+    padding: 36px 0 28px;
+  }
+  .bot-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .bot-row nav { display: flex; gap: 26px; flex-wrap: wrap; }
+  .bot-row nav a {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    transition: color .15s;
+  }
+  .bot-row nav a:hover { color: var(--orange); }
+  .copy {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    color: var(--ink-mute);
+    text-align: center;
+    margin: 22px 0 0;
+    text-transform: uppercase;
+  }
+  @media (max-width: 600px) {
+    .bot-row { flex-direction: column; align-items: flex-start; gap: 14px; }
+  }
+
+  /* ——————————————————— skip nav (accessibility) ——————————————————— */
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 8px;
+    z-index: 100;
+    padding: 8px 16px;
+    background: var(--ink);
+    color: #fff;
+    font-family: var(--mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+  .skip-link:focus { left: 8px; }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ————————— HEADER ————————— -->
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="/" aria-label="Build with Jose home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 11 11" shape-rendering="crispEdges">
+          <rect width="11" height="11" fill="transparent"/>
+          <g fill="#15171c">
+            <rect x="1" y="1" width="2" height="2"/>
+            <rect x="3" y="1" width="2" height="2"/>
+            <rect x="5" y="1" width="2" height="2"/>
+            <rect x="1" y="3" width="2" height="2"/>
+            <rect x="7" y="3" width="2" height="2"/>
+            <rect x="1" y="5" width="2" height="2"/>
+            <rect x="3" y="5" width="2" height="2"/>
+            <rect x="5" y="5" width="2" height="2"/>
+            <rect x="1" y="7" width="2" height="2"/>
+            <rect x="7" y="7" width="2" height="2"/>
+          </g>
+          <rect x="7" y="1" width="2" height="2" fill="#ff4a1c"/>
+        </svg>
+      </span>
+      <span class="stack">
+        Build with Jose
+        <small>EST. 2024</small>
+      </span>
+    </a>
+    <nav class="primary" aria-label="Primary">
+      <a href="#pillars">Curriculum</a>
+      <a href="#founder">About</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn" href="#price">Apply Now</a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ————————— HERO ————————— -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="pill-tag">For International Product Builders</span>
+      <h1>Land your first <span class="accent">North&nbsp;American</span> product role.</h1>
+      <p class="lede">For product builders trained outside North America. Built for PMs, designers, makers, immigrants, and builders who refuse the void.</p>
+      <div class="cta-row">
+        <a class="btn lg" href="#price">Apply for Cohort 04</a>
+        <a class="btn lg ghost" href="#founder">Watch the Story</a>
+      </div>
+    </div>
+    <div>
+      <div class="video" id="video" role="button" tabindex="0" aria-label="Play story video">
+        <span class="tag-tr" aria-hidden="true">REC · 02:48</span>
+        <button class="play" aria-label="Play: How Jose built it for himself">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+            <path d="M4 2 L20 11 L4 20 Z" fill="#15171c"/>
+          </svg>
+        </button>
+        <span class="label" aria-hidden="true">▶  Watch the story — How Jose built it for himself</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ————————— STATS STRIP ————————— -->
+<section class="strip" aria-label="Key statistics">
+  <div class="wrap strip-inner">
+    <div class="stat"><b>$184k</b>&nbsp;Median First NA Comp</div>
+    <div class="stat"><b>34</b>&nbsp;Years of NA Product Leadership</div>
+    <div class="stat"><b>1,200+</b>&nbsp;Builders Trained</div>
+  </div>
+</section>
+
+<!-- ————————— FOUNDER ————————— -->
+<section class="founder" id="founder">
+  <div class="wrap founder-grid">
+    <div class="portrait" aria-label="Portrait of Jose">
+      <!-- Replace SVG with <img src="jose.jpg" alt="Jose M."> when available -->
+      <svg class="portrait-placeholder" viewBox="0 0 28 32" shape-rendering="crispEdges" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <rect width="28" height="32" fill="#28201d"/>
+        <rect x="2" y="22" width="24" height="10" fill="#0e0e10"/>
+        <rect x="11" y="22" width="6" height="10" fill="#1c1c1a"/>
+        <rect x="12" y="22" width="4" height="3" fill="#f3eee9"/>
+        <rect x="12" y="19" width="4" height="3" fill="#9c7158"/>
+        <rect x="9" y="9" width="10" height="12" fill="#b8866a"/>
+        <rect x="9" y="9" width="10" height="2" fill="#a87355"/>
+        <rect x="8" y="13" width="1" height="3" fill="#9c7158"/>
+        <rect x="19" y="13" width="1" height="3" fill="#9c7158"/>
+        <rect x="10" y="13" width="3" height="1" fill="#2c2018"/>
+        <rect x="15" y="13" width="3" height="1" fill="#2c2018"/>
+        <rect x="11" y="14" width="1" height="1" fill="#1a1a18"/>
+        <rect x="16" y="14" width="1" height="1" fill="#1a1a18"/>
+        <rect x="12" y="17" width="4" height="1" fill="#5a3a2a"/>
+        <rect x="11" y="18" width="6" height="1" fill="#3a2418"/>
+        <rect x="10" y="18" width="8" height="1" fill="#5a3a2a"/>
+      </svg>
+    </div>
+    <div>
+      <h2><span class="q">"</span>Hi, I'm Jose. I built this because no one built it for me.<span class="q">"</span></h2>
+      <p class="meta">
+        <span>Role: Product</span><span>Creator</span><span>Educator</span><span>Evangelist</span>
+      </p>
+      <p>Ten years ago, I landed in Canada with a bag and a dream. I've since led product teams at Series B+ startups and taught over 500 international product builders how to navigate the North American market.</p>
+      <p>I left El Salvador at age 21, during the visa wait. My parents were working class with no roadmap. When I eventually found my way into tech, I figured it out the slow way: by failing fast at every step, until my pixels finally rendered into product.</p>
+      <p>Today I lead high-touch product and design at Air Canada. Most online PM education is generic. I built the curriculum to give you the specific, high-trust frameworks that actually move the needle in US-and-Canada tech orgs.</p>
+      <div class="as-seen">
+        <span class="eyebrow">As seen at</span>
+        <div class="logo-row" aria-label="Featured in">
+          <span class="lg">Air Canada</span>
+          <span class="lg mono">RocketBuild</span>
+          <span class="lg">TechCrunch</span>
+          <span class="lg mono">EdCanada</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ————————— PILLARS ————————— -->
+<section class="pillars" id="pillars">
+  <div class="wrap">
+    <div class="section-head">
+      <h3>The Four Pillars of Your Success</h3>
+      <p>Everything you need to navigate the global tech ecosystem.</p>
+    </div>
+    <div class="pillar-grid">
+
+      <article class="pillar">
+        <span class="num" aria-hidden="true">01</span>
+        <svg class="pixicon" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true">
+          <g fill="#15171c">
+            <rect x="0" y="0" width="3" height="3"/>
+            <rect x="4" y="0" width="3" height="3"/>
+            <rect x="0" y="4" width="3" height="3"/>
+          </g>
+          <rect x="4" y="4" width="3" height="3" fill="#ff4a1c"/>
+          <rect x="7" y="7" width="3" height="3" fill="#15171c"/>
+        </svg>
+        <h4>The NA Hiring System</h4>
+        <p>Proven framework for the visa-sponsoring interview loop. Built for builders applying from the wrong inbox.</p>
+      </article>
+
+      <article class="pillar">
+        <span class="num" aria-hidden="true">02</span>
+        <svg class="pixicon" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true">
+          <g fill="#15171c">
+            <rect x="0" y="4" width="6" height="2"/>
+            <rect x="6" y="2" width="2" height="2"/>
+            <rect x="6" y="6" width="2" height="2"/>
+            <rect x="8" y="0" width="2" height="2"/>
+            <rect x="8" y="8" width="2" height="2"/>
+          </g>
+          <rect x="0" y="0" width="2" height="2" fill="#ff4a1c"/>
+        </svg>
+        <h4>Two Paths In</h4>
+        <p>Strategic playbooks for landing a job from abroad <em>or</em> pivoting from your current role in‑country.</p>
+      </article>
+
+      <article class="pillar">
+        <span class="num" aria-hidden="true">03</span>
+        <svg class="pixicon" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true">
+          <rect x="0" y="3" width="10" height="6" fill="#15171c"/>
+          <rect x="3" y="1" width="4" height="2" fill="#15171c"/>
+          <rect x="4" y="5" width="2" height="2" fill="#ff4a1c"/>
+        </svg>
+        <h4>The AI‑Native PM Toolkit</h4>
+        <p>Master the loop that the hiring teams actually pressure-test in 2026 — prompt to product, in 90 minutes.</p>
+      </article>
+
+      <article class="pillar">
+        <span class="num" aria-hidden="true">04</span>
+        <svg class="pixicon" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true">
+          <g fill="#15171c">
+            <rect x="1" y="2" width="2" height="2"/>
+            <rect x="0" y="4" width="4" height="3"/>
+            <rect x="7" y="2" width="2" height="2"/>
+            <rect x="6" y="4" width="4" height="3"/>
+          </g>
+          <rect x="4" y="3" width="2" height="2" fill="#ff4a1c"/>
+          <rect x="3" y="5" width="4" height="3" fill="#ff4a1c"/>
+        </svg>
+        <h4>The Community</h4>
+        <p>Direct access to a peer group of high-potential international builders, plus mentors who've shipped.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ————————— DARK RESOURCES ————————— -->
+<section class="dark-section">
+  <div class="wrap dark-grid">
+    <div>
+      <div class="lab">Force.io</div>
+      <h3>Hardcore resources.</h3>
+      <p>Tools and resources designed to collapse your time-to-first-offer.</p>
+    </div>
+
+    <article class="res-card">
+      <div class="n">01</div>
+      <h5>The Sponsor Database</h5>
+      <p>A live, curated list of 600+ companies with a track record of H-1B and OWP sponsorship.</p>
+    </article>
+
+    <article class="res-card">
+      <div class="n">02</div>
+      <h5>Cold Email Recipes</h5>
+      <p>Templates that have proven 18× reply rate at Director, VP, and Founder-level outreach.</p>
+    </article>
+
+    <article class="res-card">
+      <div class="n">03</div>
+      <h5>Resume De‑Globalizer</h5>
+      <p>An AI-driven audit to translate your international experience into North American hiring vernacular.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ————————— PRICE ————————— -->
+<section class="price-section" id="price">
+  <div class="wrap">
+    <div class="price-card">
+      <div class="corner" aria-hidden="true"></div>
+      <span class="eyebrow">The Workshop Awaits</span>
+      <h3>Join the Cohort</h3>
+      <div class="price" aria-label="Price: $497, reduced from $597">
+        <span class="old" aria-label="Was $597">$597</span>
+        <span class="new"><sup>$</sup>497</span>
+      </div>
+      <p class="price-note">USD · One-time payment · Limited to 40 seats</p>
+
+      <ul class="feat-list">
+        <li>
+          <svg width="18" height="18" viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true">
+            <rect x="0" y="0" width="8" height="8" fill="#ff4a1c"/>
+            <g fill="#fff">
+              <rect x="1" y="4" width="1" height="1"/>
+              <rect x="2" y="5" width="1" height="1"/>
+              <rect x="3" y="6" width="1" height="1"/>
+              <rect x="4" y="5" width="1" height="1"/>
+              <rect x="5" y="4" width="1" height="1"/>
+              <rect x="6" y="3" width="1" height="1"/>
+            </g>
+          </svg>
+          <div><b>Complete 8-Module Video Curriculum</b>Step-by-step playbook through the NA hiring loop.</div>
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true">
+            <rect x="0" y="0" width="8" height="8" fill="#ff4a1c"/>
+            <g fill="#fff">
+              <rect x="1" y="4" width="1" height="1"/>
+              <rect x="2" y="5" width="1" height="1"/>
+              <rect x="3" y="6" width="1" height="1"/>
+              <rect x="4" y="5" width="1" height="1"/>
+              <rect x="5" y="4" width="1" height="1"/>
+              <rect x="6" y="3" width="1" height="1"/>
+            </g>
+          </svg>
+          <div><b>Private Community (Discord)</b>800+ international peers. Lifetime access.</div>
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true">
+            <rect x="0" y="0" width="8" height="8" fill="#ff4a1c"/>
+            <g fill="#fff">
+              <rect x="1" y="4" width="1" height="1"/>
+              <rect x="2" y="5" width="1" height="1"/>
+              <rect x="3" y="6" width="1" height="1"/>
+              <rect x="4" y="5" width="1" height="1"/>
+              <rect x="5" y="4" width="1" height="1"/>
+              <rect x="6" y="3" width="1" height="1"/>
+            </g>
+          </svg>
+          <div><b>Weekly Office Hours with Jose</b>Live walkthroughs of your application materials.</div>
+        </li>
+      </ul>
+
+      <a class="btn lg block" href="#cta">Take a Module Tour</a>
+      <p class="micro">30-day no-questions-asked guarantee</p>
+    </div>
+  </div>
+</section>
+
+<!-- ————————— RESULTS ————————— -->
+<section class="results">
+  <div class="wrap">
+    <div class="section-head">
+      <h3>Results from the Forge</h3>
+    </div>
+    <div class="results-grid">
+      <article class="result">
+        <div class="mark" aria-hidden="true">"</div>
+        <blockquote>Jose helped me decode the subtle signals of US product recruitment. I started at a Tier-1 startup within 4 months of finishing his system.</blockquote>
+        <cite><b>Ana Patel</b>Product Lead · ShelfOS</cite>
+      </article>
+      <article class="result">
+        <div class="mark" aria-hidden="true">"</div>
+        <blockquote>The clarity of the curriculum is unmatched. It's not just theory, it's a playbook for high‑stakes leadership in complex markets.</blockquote>
+        <cite><b>Eren Marik</b>Senior PM · Cloud Forge</cite>
+      </article>
+      <article class="result">
+        <div class="mark" aria-hidden="true">"</div>
+        <blockquote>Finally, a program that values the maker spirit while delivering professional growth strategies for career acceleration.</blockquote>
+        <cite><b>Soulètre Emmanuel</b>Founder · Optoload</cite>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ————————— FAQ ————————— -->
+<section class="faq" id="faq">
+  <div class="wrap faq-grid">
+    <h3>Common Questions</h3>
+    <div>
+      <details class="qa" open>
+        <summary>Do I need to be in Canada or the US already?</summary>
+        <div class="ans">No. Over 60% of our students are applying from overseas. The "Two Paths In" module specifically addresses how to start, whether in the US or from abroad — with worked legal pathways and timing playbooks.</div>
+      </details>
+      <details class="qa">
+        <summary>Is this for developers too?</summary>
+        <div class="ans">While the curriculum is laser-focused on Product Management, the networking and new strategies apply to any technical "maker" role, including Engineering and UX Design.</div>
+      </details>
+      <details class="qa">
+        <summary>What happens after I pay?</summary>
+        <div class="ans">You'll get instant access to the video library and the Discord community. New modules are unlocked quarterly to reflect changes in the hiring market.</div>
+      </details>
+      <details class="qa">
+        <summary>How long does the cohort run?</summary>
+        <div class="ans">The structured cohort runs 8 weeks with live sessions every Saturday. After that, you keep lifetime access to the materials and the alumni community.</div>
+      </details>
+      <details class="qa">
+        <summary>Is there a guarantee?</summary>
+        <div class="ans">Yes — 30 days, no questions asked. If the system isn't for you, email us and we'll refund in full.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ————————— BIG CTA ————————— -->
+<section class="cta-banner" id="cta">
+  <svg class="cta-pixel" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true">
+    <g fill="#1a0a06">
+      <rect x="2" y="4" width="12" height="8"/>
+      <rect x="3" y="3" width="10" height="1"/>
+      <rect x="4" y="2" width="8" height="1"/>
+      <rect x="2" y="12" width="12" height="1"/>
+      <rect x="1" y="13" width="14" height="1"/>
+    </g>
+    <g fill="#ff8a6e">
+      <rect x="4" y="6" width="8" height="1"/>
+      <rect x="4" y="8" width="6" height="1"/>
+      <rect x="4" y="10" width="7" height="1"/>
+    </g>
+  </svg>
+  <svg class="cta-pixel-left" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true">
+    <g fill="#1a0a06">
+      <rect x="4" y="2" width="8" height="12"/>
+      <rect x="3" y="14" width="10" height="1"/>
+    </g>
+    <g fill="#ff8a6e">
+      <rect x="5" y="4" width="6" height="1"/>
+      <rect x="5" y="6" width="4" height="1"/>
+      <rect x="5" y="8" width="5" height="1"/>
+      <rect x="5" y="10" width="3" height="1"/>
+    </g>
+  </svg>
+
+  <div class="wrap cta-inner">
+    <h3>Stop sending résumés into the void.</h3>
+    <p>Join 1,200+ ambitious builders who have mastered the <b>North American system</b>.</p>
+    <form class="signup" id="signup-form">
+      <input type="email" name="email" placeholder="Your email address…" required autocomplete="email" aria-label="Email address">
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="footnote">No spam. Just signal.</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ————————— FOOTER ————————— -->
+<footer class="bot">
+  <div class="wrap">
+    <div class="bot-row">
+      <a class="brand" href="/" aria-label="Build with Jose home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 11 11" shape-rendering="crispEdges">
+            <g fill="#15171c">
+              <rect x="1" y="1" width="2" height="2"/><rect x="3" y="1" width="2" height="2"/>
+              <rect x="5" y="1" width="2" height="2"/><rect x="1" y="3" width="2" height="2"/>
+              <rect x="7" y="3" width="2" height="2"/><rect x="1" y="5" width="2" height="2"/>
+              <rect x="3" y="5" width="2" height="2"/><rect x="5" y="5" width="2" height="2"/>
+              <rect x="1" y="7" width="2" height="2"/><rect x="7" y="7" width="2" height="2"/>
+            </g>
+            <rect x="7" y="1" width="2" height="2" fill="#ff4a1c"/>
+          </svg>
+        </span>
+        <span class="stack">Build with Jose<small>Crafted by Jose, in El Salvador</small></span>
+      </a>
+      <nav aria-label="Footer">
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
+        <a href="https://twitter.com" rel="noopener" target="_blank">Twitter</a>
+        <a href="https://linkedin.com" rel="noopener" target="_blank">LinkedIn</a>
+      </nav>
+    </div>
+    <p class="copy">© 2026 Build with Jose. Crafted by Jose, in El Salvador.</p>
+  </div>
+</footer>
+
+<script>
+  // Video play interaction
+  const vid = document.getElementById('video');
+  const play = vid && vid.querySelector('.play');
+  if (play) {
+    const activate = () => {
+      vid.style.background = 'radial-gradient(circle at 50% 50%, #3a3531 0%, #18181a 70%)';
+      play.style.display = 'none';
+      const tag = vid.querySelector('.tag-tr');
+      if (tag) { tag.textContent = '● REC · 00:01'; }
+      vid.removeAttribute('tabindex');
+      vid.removeAttribute('role');
+    };
+    play.addEventListener('click', activate);
+    vid.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); } });
+  }
+
+  // Email signup
+  const form = document.getElementById('signup-form');
+  if (form) {
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const btn = form.querySelector('button');
+      btn.textContent = '✓ You\'re in';
+      btn.disabled = true;
+      form.querySelector('input').disabled = true;
+    });
+  }
+</script>
+
+</body>
+</html>
