@@ -680,21 +680,6 @@
     overflow: hidden;
     padding: 64px 0 72px;
   }
-  .cta-banner::before, .cta-banner::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    width: 220px; height: 220px;
-    background-image:
-      linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px);
-    background-size: 18px 18px;
-    opacity: .9;
-    mix-blend-mode: overlay;
-    pointer-events: none;
-  }
-  .cta-banner::before { left: -60px; transform: translateY(-50%) rotate(-12deg); }
-  .cta-banner::after { right: -60px; transform: translateY(-50%) rotate(12deg); }
   .cta-inner { position: relative; z-index: 2; text-align: center; max-width: 620px; margin: 0 auto; }
   .cta-banner h3 {
     font-family: var(--serif);
@@ -870,9 +855,11 @@
   /* ——————————————————— session tiers ——————————————————— */
   .tier-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 26px;
     align-items: stretch;
+    max-width: 840px;
+    margin: 0 auto;
   }
   .tier {
     background: var(--paper);
@@ -970,7 +957,6 @@
         <span class="next-up-tag">Next up</span>
         <ul>
           <li><b>Online Intro</b><span>60 min · $25, credited forward</span></li>
-          <li><b>In-Person Intro</b><span>3 hrs · November · Date TBA</span></li>
           <li><b>Full Course</b><span>Nov 7 · 10am–4pm · 30 seats only</span></li>
         </ul>
         <a href="#price">Details &amp; sign-up ↓</a>
@@ -1037,7 +1023,7 @@
   <div class="wrap">
     <div class="section-head">
       <h3>The Curriculum: Aim · Attract · Convert · Connect</h3>
-      <p>Stop firing applications into the void. Build a system that makes the right people come to you, with AI doing the heavy lifting.</p>
+      <p>Stop sending applications that get no reply. Build a system that makes the right people come to you, with AI doing the heavy lifting.</p>
     </div>
     <div class="pillar-grid">
 
@@ -1136,8 +1122,8 @@
 <section class="price-section" id="price">
   <div class="wrap">
     <div class="section-head">
-      <h3>Three Ways In</h3>
-      <p>Start online. Go deeper in person. Build the whole system in one day. Every dollar of the intro counts toward your seat.</p>
+      <h3>Two Ways In</h3>
+      <p>Start online for $25. Build the whole system in one day on Nov 7. Your $25 counts toward your seat.</p>
     </div>
     <div class="tier-grid">
 
@@ -1146,29 +1132,14 @@
         <h4>Online Intro</h4>
         <p class="when">60 minutes · Live online</p>
         <div class="amt">$25 <small>CAD</small></div>
-        <p class="amt-note">Fully credited toward any paid session</p>
+        <p class="amt-note">Fully credited toward the full course</p>
         <p class="desc">The big picture of the full system. See how Aim → Attract → Convert → Connect fits together, and decide if it is for you.</p>
         <ul>
           <li>The four pillars, explained live</li>
-          <li>Why cold applications go into the void</li>
+          <li>Why cold applications get no reply</li>
           <li>Live Q&amp;A with Jose</li>
         </ul>
         <a class="btn block" href="#cta">Register · $25</a>
-      </article>
-
-      <article class="tier">
-        <span class="flag">Early sign-up</span>
-        <h4>In-Person Intro</h4>
-        <p class="when">3 hours · November · Date TBA</p>
-        <div class="amt">$95 <small>CAD</small></div>
-        <p class="amt-note">$75 early sign-up · Small room, limited seats</p>
-        <p class="desc">A hands-on working session. Leave with your target list drafted and your positioning sharpened, in the room with peers on the same path.</p>
-        <ul>
-          <li>Walk out knowing which roles are yours to win</li>
-          <li>Resume &amp; portfolio teardown, live</li>
-          <li>Meet builders on the same journey</li>
-        </ul>
-        <a class="btn block" href="#cta">Reserve a Seat</a>
       </article>
 
       <article class="tier featured">
@@ -1202,7 +1173,7 @@
       <article class="result">
         <div class="mark" aria-hidden="true">"</div>
         <blockquote>He helped me throughout my job search journey, and I have secured interviews from FAANG. He not only helped me with Product management preparation, but also constantly motivated me throughout the process.</blockquote>
-        <cite><b>Hasikaa</b>Mentee · 6-month mentorship</cite>
+        <cite><b>Hasikaa</b>Mentee</cite>
       </article>
       <article class="result">
         <div class="mark" aria-hidden="true">"</div>
@@ -1212,7 +1183,7 @@
       <article class="result">
         <div class="mark" aria-hidden="true">"</div>
         <blockquote>Over the past few months I went from commercial PM to building Flowwise, a live AI-powered fintech app, from scratch. From user research and product strategy to a live interactive prototype, this program pushed me to think differently. A huge thank you to my instructor Jose Platero for his guidance, feedback, and genuine investment in our growth.</blockquote>
-        <cite><b>Chelsea Pascual</b>Product Manager, Fintech · BrainStation PM Certificate</cite>
+        <cite><b>Chelsea Pascual</b>Product Manager</cite>
       </article>
     </div>
   </div>
@@ -1225,7 +1196,7 @@
     <div>
       <details class="qa" open>
         <summary>Who is this for?</summary>
-        <div class="ans">Product builders trained outside North America: PMs, designers, makers, and builders trying to break into the US or Canada market. If you have been sending applications into the void, this is built for you.</div>
+        <div class="ans">Product builders trained outside North America: PMs, designers, makers, and builders trying to break into the US or Canada market. If you have been sending applications and hearing nothing back, this is built for you.</div>
       </details>
       <details class="qa">
         <summary>Do I need to know how to code or use Claude Code?</summary>
@@ -1237,7 +1208,7 @@
       </details>
       <details class="qa">
         <summary>Which session should I pick?</summary>
-        <div class="ans">Start with the $25 online intro if you are not sure. The full $25 counts toward either paid session, so trying it costs you nothing if you continue. The in-person intro gets your targeting drafted with peers in the room. The Nov 7 full course is where you build the whole system, end to end.</div>
+        <div class="ans">Start with the $25 online intro if you are not sure. The full $25 counts toward your course seat, so trying it costs you nothing if you continue. The Nov 7 full course is where you build the whole system, end to end.</div>
       </details>
       <details class="qa">
         <summary>Will one day really get me a job?</summary>
@@ -1249,41 +1220,13 @@
 
 <!-- ————————— BIG CTA ————————— -->
 <section class="cta-banner" id="cta">
-  <svg class="cta-pixel" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true">
-    <g fill="#1a0a06">
-      <rect x="2" y="4" width="12" height="8"/>
-      <rect x="3" y="3" width="10" height="1"/>
-      <rect x="4" y="2" width="8" height="1"/>
-      <rect x="2" y="12" width="12" height="1"/>
-      <rect x="1" y="13" width="14" height="1"/>
-    </g>
-    <g fill="#ff8a6e">
-      <rect x="4" y="6" width="8" height="1"/>
-      <rect x="4" y="8" width="6" height="1"/>
-      <rect x="4" y="10" width="7" height="1"/>
-    </g>
-  </svg>
-  <svg class="cta-pixel-left" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true">
-    <g fill="#1a0a06">
-      <rect x="4" y="2" width="8" height="12"/>
-      <rect x="3" y="14" width="10" height="1"/>
-    </g>
-    <g fill="#ff8a6e">
-      <rect x="5" y="4" width="6" height="1"/>
-      <rect x="5" y="6" width="4" height="1"/>
-      <rect x="5" y="8" width="5" height="1"/>
-      <rect x="5" y="10" width="3" height="1"/>
-    </g>
-  </svg>
-
   <div class="wrap cta-inner">
-    <h3>Stop sending résumés into the void.</h3>
-    <p>Leave your email to get session dates, early-bird pricing, and first access to <b>Nov 7 seats</b>.</p>
-    <form class="signup" id="signup-form">
-      <input type="email" name="email" placeholder="Your email address…" required autocomplete="email" aria-label="Email address">
-      <button type="submit">Keep Me Posted</button>
-    </form>
-    <p class="footnote">No spam. Just signal.</p>
+    <h3>Stop sending resumes that get no reply.</h3>
+    <p>Join my newsletter <b>Loops &amp; Letters</b> to get session dates, early-bird pricing, and first access to <b>Nov 7 seats</b>.</p>
+    <div class="cta-row" style="justify-content:center;">
+      <a class="btn lg" style="background:#fff; color:#1a1a18;" href="https://loopsandletters.substack.com/subscribe" target="_blank" rel="noopener">Subscribe · Loops &amp; Letters</a>
+    </div>
+    <p class="footnote">No spam. Just signal. <a href="https://loopsandletters.substack.com" target="_blank" rel="noopener" style="color:#fff; text-decoration:underline;">Read it first ↗</a></p>
   </div>
 </section>
 
@@ -1306,7 +1249,7 @@
             <rect x="7" y="1" width="2" height="2" fill="#ff4a1c"/>
           </svg>
         </span>
-        <span class="stack">Build with Jose<small>Crafted by Jose, in El Salvador</small></span>
+        <span class="stack">Build with Jose<small>Made in El Salvador. Built in Canada.</small></span>
       </a>
       <nav aria-label="Footer">
         <a href="#">Terms</a>
@@ -1314,7 +1257,7 @@
         <a href="https://joseplatero.com" rel="noopener" target="_blank">joseplatero.com</a>
       </nav>
     </div>
-    <p class="copy">© 2026 Build with Jose. Crafted by Jose, in El Salvador.</p>
+    <p class="copy">© 2026 Build with Jose. Made in El Salvador. Built in Canada.</p>
   </div>
 </footer>
 
@@ -1335,17 +1278,6 @@
     vid.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); } });
   }
 
-  // Email signup
-  const form = document.getElementById('signup-form');
-  if (form) {
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const btn = form.querySelector('button');
-      btn.textContent = '✓ You\'re in';
-      btn.disabled = true;
-      form.querySelector('input').disabled = true;
-    });
-  }
 </script>
 
 </body>
