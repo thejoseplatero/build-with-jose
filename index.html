@@ -69,7 +69,7 @@
           "courseWorkload": "PT6H",
           "maximumAttendeeCapacity": 30,
           "instructor": { "@id": "https://joseplatero.com/#jose" },
-          "offers": { "@type": "Offer", "price": "449", "priceCurrency": "CAD", "url": "https://luma.com/zno2hqvh", "availability": "https://schema.org/InStock" }
+          "offers": { "@type": "Offer", "price": "299", "priceCurrency": "CAD", "url": "https://luma.com/zno2hqvh", "availability": "https://schema.org/InStock" }
         }
       ]
     }
@@ -117,6 +117,7 @@
   a { color: inherit; text-decoration: none; }
   img { display: block; max-width: 100%; }
   html { scroll-behavior: smooth; }
+  ::selection { background: var(--orange); color: #fff; }
 
   /* keyboard focus: visible on every interactive element */
   a:focus-visible, button:focus-visible, summary:focus-visible {
@@ -449,7 +450,15 @@
     padding: 22px 18px 22px;
     position: relative;
     min-height: 220px;
+    transition: transform .18s ease, box-shadow .18s ease;
   }
+  .pillar:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 var(--ink);
+  }
+  .pillar:hover .num { color: var(--orange); }
+  .pillar .pixicon { transition: transform .18s ease; }
+  .pillar:hover .pixicon { transform: translateY(-3px); }
   .pillar::before {
     content: "";
     position: absolute; left: 0; right: 0; top: 0;
@@ -555,6 +564,11 @@
     border: 1px solid var(--ink);
     padding: 28px 24px 24px;
     position: relative;
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .result:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 var(--ink);
   }
   .result .mark {
     font-family: var(--serif);
@@ -625,8 +639,10 @@
     gap: 16px;
     user-select: none;
   }
+  details.qa summary:hover { color: var(--orange-deep); }
   details.qa summary::-webkit-details-marker { display: none; }
   details.qa summary::after {
+    transition: transform .25s cubic-bezier(.22,.61,.36,1), color .2s ease;
     content: "+";
     font-family: var(--mono);
     font-weight: 400;
@@ -635,7 +651,7 @@
     transition: color .2s ease;
     flex-shrink: 0;
   }
-  details.qa[open] summary::after { content: "–"; color: var(--orange); }
+  details.qa[open] summary::after { content: "+"; color: var(--orange); transform: rotate(45deg); }
   details.qa .ans {
     margin: 14px 0 4px;
     color: var(--ink-soft);
@@ -809,6 +825,55 @@
   }
   .tier ul li::before { content: "■"; position: absolute; left: 0; color: var(--orange); font-size: 9px; top: 11px; }
   .tier .btn.block { display: block; text-align: center; }
+  /* ——————————————————— day agenda ——————————————————— */
+  .agenda { padding: 88px 0 96px; background: var(--surface-low); border-top: 1px solid var(--ink-10); }
+  .agenda-grid { max-width: 880px; margin: 0 auto; }
+  .agenda-row {
+    display: grid;
+    grid-template-columns: 118px 1fr auto;
+    gap: 24px;
+    align-items: baseline;
+    padding: 22px 4px;
+    border-bottom: 1px solid var(--ink-10);
+    transition: background .15s ease, padding-left .15s ease;
+  }
+  .agenda-row:first-child { border-top: 1.5px solid var(--ink); }
+  .agenda-row:hover { background: var(--paper); padding-left: 12px; }
+  .agenda-row .t {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--orange);
+    white-space: nowrap;
+  }
+  .agenda-row h4 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 19px;
+    margin: 0 0 4px;
+    letter-spacing: -0.01em;
+  }
+  .agenda-row p { margin: 0; font-size: 14px; line-height: 1.55; color: var(--ink-soft); max-width: 520px; }
+  .agenda-row .out {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: var(--orange-soft);
+    border: 1px solid var(--orange);
+    padding: 5px 10px;
+    white-space: nowrap;
+  }
+  .agenda-row.break-row { opacity: .65; }
+  .agenda-row.break-row h4 { font-size: 15px; font-weight: 600; }
+  @media (max-width: 680px) {
+    .agenda-row { grid-template-columns: 1fr; gap: 6px; padding: 18px 4px; }
+    .agenda-row .out { justify-self: start; }
+  }
+
   .tier-alt {
     display: block; text-align: center; margin-top: 12px;
     font-family: var(--mono); font-size: 11px; font-weight: 500;
@@ -853,6 +918,7 @@
     </a>
     <nav class="primary" aria-label="Primary">
       <a href="#pillars">Curriculum</a>
+      <a href="#agenda">The Day</a>
       <a href="#price">Sessions</a>
       <a href="#founder">About</a>
       <a href="#faq">FAQ</a>
@@ -1001,6 +1067,7 @@
       <div class="lab">Built with Claude Code</div>
       <h3>You don't just learn the system. You build it.</h3>
       <p>We use AI to build your job-search machine, not to mass-produce the spam that gets ignored. This is how I actually work, and you will leave with your system running.</p>
+      <p>And you never start from a blank screen. Every build starts from a kit I made first, then you make it yours.</p>
     </div>
 
     <article class="res-card rv d1">
@@ -1023,6 +1090,69 @@
   </div>
 </section>
 
+<!-- ————————— DAY AGENDA ————————— -->
+<section class="agenda" id="agenda">
+  <div class="wrap">
+    <div class="section-head rv">
+      <h3>Nov 7, Hour by Hour</h3>
+      <p>Six hours, four builds, one working system. Every block starts from a pre-made kit, so the time goes into making it yours, not starting from zero.</p>
+    </div>
+    <div class="agenda-grid">
+
+      <div class="agenda-row rv">
+        <span class="t">10:00</span>
+        <div>
+          <h4>Aim: pick your targets</h4>
+          <p>Your expertise, your interests, and the market, mapped together. We set up Claude Code and build your targeting system first, because everything else depends on it.</p>
+        </div>
+        <span class="out">You build: target list</span>
+      </div>
+
+      <div class="agenda-row rv">
+        <span class="t">11:15</span>
+        <div>
+          <h4>Convert: translate your experience</h4>
+          <p>Resume and portfolio, rebuilt through a hiring director's eyes. Then we wire your application engine so every future application tailors itself to its target.</p>
+        </div>
+        <span class="out">You build: application engine</span>
+      </div>
+
+      <div class="agenda-row break-row rv">
+        <span class="t">12:30</span>
+        <div><h4>Lunch, together</h4><p>The networking pillar starts here, in practice.</p></div>
+      </div>
+
+      <div class="agenda-row rv">
+        <span class="t">1:15</span>
+        <div>
+          <h4>Attract: build your presence</h4>
+          <p>Your positioning, your content system, and the profile that makes the right people find you. Set up once, then it works while you sleep.</p>
+        </div>
+        <span class="out">You build: presence machine</span>
+      </div>
+
+      <div class="agenda-row rv">
+        <span class="t">2:30</span>
+        <div>
+          <h4>Connect: network like it matters</h4>
+          <p>Relationships over transactions. Who to reach, what to say, and the follow-up system that turns one conversation into a door that stays open.</p>
+        </div>
+        <span class="out">You build: outreach system</span>
+      </div>
+
+      <div class="agenda-row rv">
+        <span class="t">3:30</span>
+        <div>
+          <h4>Launch: run it live</h4>
+          <p>You send your first real application through your new system before you leave. Then your week one plan, so momentum survives the weekend.</p>
+        </div>
+        <span class="out">You send: application one</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ————————— PRICE ————————— -->
 <section class="price-section" id="price">
   <div class="wrap">
@@ -1038,12 +1168,12 @@
         <p class="when">Aug 27 or Oct 29 · 6pm ET · 90 min · Live online</p>
         <div class="amt">$25 <small>CAD</small></div>
         <p class="amt-note">Same session on both dates</p>
-        <p class="desc">The big picture of the full system. See how Aim → Attract → Convert → Connect fits together, and decide if it is for you.</p>
+        <p class="desc">Not a preview. Your first class. You leave with your first target list drafted and the tools to keep going that night.</p>
         <ul>
-          <li>The four pillars, explained live</li>
-          <li>Why cold applications get no reply</li>
-          <li>Watch Jose build part of the system live in Claude Code</li>
-          <li>Live Q&amp;A with Jose</li>
+          <li>The full system, explained: why cold applications get no reply and what works instead</li>
+          <li><b>Your takeaway: your first target list, drafted live in the session</b></li>
+          <li>Live demo: a real resume and a real job posting become a company-branded pitch page, in minutes</li>
+          <li>Starter kits to take home: the same Claude skills Jose uses, free</li>
         </ul>
         <a class="btn block" href="https://luma.com/8zjiutyd" target="_blank" rel="noopener">Register · Aug 27</a>
         <a class="tier-alt" href="https://luma.com/rslv1skh" target="_blank" rel="noopener">Or join the Oct 29 session</a>
@@ -1053,7 +1183,7 @@
         <span class="flag">The full build</span>
         <h4>Full Course: One Day</h4>
         <p class="when">Nov 7 · 10am–4pm · In person · 30 seats only</p>
-        <div class="amt">$449 <small>CAD</small></div>
+        <div class="amt">$299 <small>CAD</small></div>
         <p class="amt-note">Bring a laptop. No coding needed.</p>
         <p class="desc">Build your entire job-search system in Claude Code, with Jose in the room. Walk out with it running.</p>
         <ul>
@@ -1063,6 +1193,7 @@
           <li>A network that opens doors for years</li>
         </ul>
         <a class="btn block" href="https://luma.com/zno2hqvh" target="_blank" rel="noopener">Save Your Seat · Nov 7</a>
+        <a class="tier-alt" href="#agenda">See the day, hour by hour</a>
       </article>
 
     </div>
@@ -1179,6 +1310,30 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  })();
+
+  // Stats strip: count up when it scrolls into view
+  (() => {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const strip = document.querySelector('.strip');
+    if (!strip) return;
+    const io = new IntersectionObserver((entries) => {
+      if (!entries[0].isIntersecting) return;
+      io.disconnect();
+      strip.querySelectorAll('.stat b').forEach(b => {
+        const raw = b.textContent;
+        const m = raw.match(/^(\d+)(.*)$/);
+        if (!m) return;
+        const target = +m[1], suffix = m[2], t0 = performance.now(), dur = 900;
+        const tick = (t) => {
+          const p = Math.min((t - t0) / dur, 1);
+          b.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+    }, { threshold: 0.4 });
+    io.observe(strip);
   })();
 </script>
 
